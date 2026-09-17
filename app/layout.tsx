@@ -1,10 +1,13 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
+import { Toaster } from '@/components/ui/sonner'
+import { AppShell } from '@/components/app-shell'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
+  title: 'FlowDesk — AI Productivity Assistant',
+  description:
+    'An AI-powered productivity assistant that drafts emails, summarizes meetings, plans your day, researches topics, builds resumes, and answers questions.',
   generator: 'v0.app',
   icons: {
     icon: [
@@ -41,7 +44,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased">
-        {children}
+        <AppShell>{children}</AppShell>
+        <Toaster position="top-center" />
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
